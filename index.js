@@ -6,6 +6,7 @@ const reset = document.getElementById("reset");
 
 let red_path = [];
 let yellow_path = [];
+let rounds = [];
 let choices = 0; 
 let red_score = 0;
 let yellow_score = 0;
@@ -27,11 +28,12 @@ boxes.forEach((box, i) => {
                 let red_include = winning_paths.some(a => red_path.every((v,i) => v == a[i])) ;
                 if (red_include){
                 paragraph = document.getElementById("winner");
-                let text = document.createTextNode("Red Won! 🔴");
+                let text = document.createTextNode("Red Won! 🔴\n");
                 paragraph.appendChild(text);
                 red_score += 1;
+                rounds += 1;
                 paragraph = document.getElementById("score");
-                let number = document.createTextNode(red_score);
+                let number = document.createTextNode("Round"+ rounds +": "+ red_score);
                 paragraph.appendChild(number);
                 hideAllCircles(boxes);
                 red_path = [];
@@ -51,11 +53,12 @@ boxes.forEach((box, i) => {
                 let yellow_include = winning_paths.some(a => red_path.every((v,i) => v == a[i])) ;
                 if (yellow_include) {
                 paragraph = document.getElementById("winner");
-                let text = document.createTextNode("Yellow Won! 🟡");
+                let text = document.createTextNode("Yellow Won! 🟡 \n");
                 paragraph.appendChild(text);
                 yellow_score += 1;
+                rounds += 1;
                 paragraph = document.getElementById("score");
-                let number = document.createTextNode(yellow_score);
+                let number = document.createTextNode("Round"+ rounds +": "+ yellow_score);
                 paragraph.appendChild(number);
                 hideAllCircles(boxes);
                 yellow_path = [];
@@ -65,7 +68,8 @@ boxes.forEach((box, i) => {
         }
         if (choices >8) {
             paragraph = document.getElementById("winner");
-            let text = document.createTextNode("No one won!");
+            rounds += 1;
+            let text = document.createTextNode("Round :" + rounds + "No one won!");
             paragraph.appendChild(text);
             choices = 0;
             yellow_path = [];
