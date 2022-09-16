@@ -7,8 +7,16 @@ body {
     background-color: rgba(27, 24, 27, 0.425);
 }
 
-img {
+h3 > img {
     width: 1vw;
+}
+
+img {
+    width: 5vw;
+}
+
+.box.red-button , .box.yellow-button {
+    cursor: not-allowed;
 }
 
 h1 {
@@ -50,4 +58,18 @@ h3 {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.yellow-button {
+    background-color: yellow;
+    border-radius: 200px;
+    height: 5vw;
+    width: 5vw;
+}
+
+.red-button {
+    background-color: red;
+    border-radius: 200px;
+    height: 5vw;
+    width: 5vw;
 }
