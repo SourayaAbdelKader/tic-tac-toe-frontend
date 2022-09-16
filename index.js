@@ -33,9 +33,10 @@ boxes.forEach((box, i) => {
                 paragraph = document.getElementById("score");
                 let number = document.createTextNode(red_score);
                 paragraph.appendChild(number);
-                hideAllCircles(boxes);}
+                hideAllCircles(boxes);
                 red_path = [];
                 yellow_path = [];
+                choices = 0;}
             }
         }
 
@@ -56,9 +57,10 @@ boxes.forEach((box, i) => {
                 paragraph = document.getElementById("score");
                 let number = document.createTextNode(yellow_score);
                 paragraph.appendChild(number);
-                hideAllCircles(boxes);}
+                hideAllCircles(boxes);
                 yellow_path = [];
                 red_path = [];
+                choices = 0;}
             }
         }
         if (choices >8) {
