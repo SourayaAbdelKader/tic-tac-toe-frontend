@@ -1,31 +1,29 @@
-let yellow_turn;
-const redclass = "red-button";
-const yellowclass= "yellow-button";
+// winning paths, based on the grid and html , put the numbers in the increasing order
+winning_paths = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
 
-const reset = document.getElementById("reset");
+const boxes = document.querySelectorAll(".box");
+let red_path = [];
+let yellow_path = [];
+let red_turn = false;
+let yellow_turn = false;
+let choices = 0; 
 
-const boxes = document.querySelectorAll("box");
+boxes.forEach((box, i) => {
+    box.addEventListener("click", () => {
+        choices += 1;
+        console.log(i);
+        console.log(choices);
+        if (choices%2 != 0) {
+            red_path.push(i);
+            const circle= document.getElementById("C"+i);
+            circle.classList.add("button-red")
+        }
 
-boxes.forEach(box => {
-    box.addEventListener("click", handleClick, { once: true }) 
-});
+        if (choices%2 == 0) {
+            yellow_path.push(i);
+            const circle= document.getElementById("C"+i);
+            circle.classList.add("button-yellow")
+        }
+})
 
-const handleClick = (e) => {
-    const box = e.target;
-    const current_class = yellow_turn ? yellowclass : redclass;
-    placeMarker(box, current_class);
-
-    swapTurns();
-}
-
-const placeMarker = (box, current_class) => {
-    box.classList.add(current_class)
-};
-
-reset.addEventListener("click", () =>{
-    window.location.reload();
-});
-
-const swapTurns = () => {
-    yellow_turn = !yellow_turn;
-} 
+})
