@@ -6,8 +6,6 @@ const reset = document.getElementById("reset");
 
 let red_path = [];
 let yellow_path = [];
-let red_turn = false;
-let yellow_turn = false;
 let choices = 0; 
 let red_score = 0;
 let yellow_score = 0;
@@ -25,6 +23,7 @@ boxes.forEach((box, i) => {
             circle.classList.add("button-red");
             circle.classList.add("disable"); 
             if (red_path.length == 3) {
+                // include not working perfectly, sometimes it changes the result, tried different methdes, didn't work
                 let red_include = winning_paths.some(a => red_path.every((v,i) => v == a[i])) ;
                 if (red_include){
                 paragraph = document.getElementById("winner");
@@ -35,7 +34,8 @@ boxes.forEach((box, i) => {
                 let number = document.createTextNode(red_score);
                 paragraph.appendChild(number);
                 hideAllCircles(boxes);}
-                red_path=[];
+                red_path = [];
+                yellow_path = [];
             }
         }
 
@@ -57,10 +57,19 @@ boxes.forEach((box, i) => {
                 let number = document.createTextNode(yellow_score);
                 paragraph.appendChild(number);
                 hideAllCircles(boxes);}
-                yellow_path=[];
+                yellow_path = [];
+                red_path = [];
             }
-        
         }
+        if (choices >8) {
+            paragraph = document.getElementById("winner");
+            let text = document.createTextNode("No one won!");
+            paragraph.appendChild(text);
+            choices = 0;
+            yellow_path = [];
+            red_path = [];
+            hideAllCircles(boxes)
+        } 
 })
 
 })
@@ -75,6 +84,6 @@ const hideAllCircles = (boxes) => {
 })
 }
 
-reset.addEventListener("click",() => {
-    window.location.reload();
+reset.addEventListener("click", () => {
+    window.location.reload()
 })
