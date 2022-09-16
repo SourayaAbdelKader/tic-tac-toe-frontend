@@ -73,3 +73,7 @@ h3 {
 .button-yellow {
     background-color: yellow;
 }
+
+.disable {
+    cursor: not-allowed ;
+}
