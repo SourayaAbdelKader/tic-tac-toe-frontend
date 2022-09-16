@@ -1,7 +1,9 @@
 // winning paths, based on the grid and html , put the numbers in the increasing order
-winning_paths = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
+const winning_paths = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
 
 const boxes = document.querySelectorAll(".box");
+const reset = document.getElementById("reset");
+
 let red_path = [];
 let yellow_path = [];
 let red_turn = false;
@@ -30,7 +32,7 @@ boxes.forEach((box, i) => {
                 paragraph.appendChild(text);
                 red_score += 1;
                 paragraph = document.getElementById("score");
-                let number = document.createTextNode(score);
+                let number = document.createTextNode(red_score);
                 paragraph.appendChild(number);
                 hideAllCircles(boxes);}
                 red_path=[];
@@ -52,13 +54,12 @@ boxes.forEach((box, i) => {
                 paragraph.appendChild(text);
                 yellow_score += 1;
                 paragraph = document.getElementById("score");
-                let number = document.createTextNode(score);
+                let number = document.createTextNode(yellow_score);
                 paragraph.appendChild(number);
                 hideAllCircles(boxes);}
                 yellow_path=[];
             }
         
-    
         }
 })
 
@@ -73,3 +74,7 @@ const hideAllCircles = (boxes) => {
         {circle.classList.remove("button-yellow")}
 })
 }
+
+reset.addEventListener("click",() => {
+    window.location.reload();
+})

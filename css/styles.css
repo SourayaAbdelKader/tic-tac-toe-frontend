@@ -77,3 +77,9 @@ h3 {
 .disable {
     cursor: not-allowed ;
 }
+
+.reset {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
